@@ -13,7 +13,7 @@ class StockPicking(models.Model):
 
         for picking in self:
             line_counter = {}
-            for move_line in picking.move_line_ids_without_package.filtered(lambda l: l.qty_done == 1 and l.lot_id and not l.sku_unico):
+            for move_line in picking.move_line_ids_without_package.filtered(lambda l: l.quantity == 1 and l.lot_id and not l.sku_unico):
                 purchase_line = move_line.move_id.purchase_line_id
                 prefix = purchase_line.x_sku_prefix or move_line.lot_id.name
                 lot_name = move_line.lot_id.name

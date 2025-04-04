@@ -18,7 +18,7 @@
         <field name="model">stock.move.line</field>
         <field name="inherit_id" ref="stock.view_move_line_form"/>
         <field name="arch" type="xml">
-            <xpath expr="//field[@name='qty_done']" position="after">
+            <xpath expr="//field[@name='quantity']" position="after">
                 <field name="sku_unico" readonly="1"/>
             </xpath>
         </field>
