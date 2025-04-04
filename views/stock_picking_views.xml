@@ -1,5 +1,5 @@
 <odoo>
-    <!-- Vista TREE stock.move.line -->
+    <!-- Vista TREE de stock.move.line -->
     <record id="stock_move_line_tree_view_inherit_sku" model="ir.ui.view">
         <field name="name">stock.move.line.tree.inherit.sku</field>
         <field name="model">stock.move.line</field>
@@ -7,13 +7,13 @@
         <field name="arch" type="xml">
             <xpath expr="//field[@name='product_id']" position="after">
                 <field name="sku_unico" readonly="1"/>
-                <field name="x_lote_comun" readonly="1"/>
-                <field name="x_sku_prefix" readonly="1"/>
+                <field name="x_lote_comun"/>
+                <field name="x_sku_prefix"/>
             </xpath>
         </field>
     </record>
 
-    <!-- Vista FORMULARIO stock.move.line -->
+    <!-- Vista FORM de stock.move.line -->
     <record id="stock_move_line_form_view_inherit_sku" model="ir.ui.view">
         <field name="name">stock.move.line.form.inherit.sku</field>
         <field name="model">stock.move.line</field>
@@ -21,23 +21,8 @@
         <field name="arch" type="xml">
             <xpath expr="//field[@name='quantity']" position="after">
                 <field name="sku_unico" readonly="1"/>
-                <field name="x_lote_comun" readonly="1"/>
-                <field name="x_sku_prefix" readonly="1"/>
-            </xpath>
-        </field>
-    </record>
-
-    <!-- Heredar la vista stock.picking para agregar campos en líneas del formulario -->
-    <record id="stock_picking_form_inherit_lote_sku" model="ir.ui.view">
-        <field name="name">stock.picking.form.inherit.lote.sku</field>
-        <field name="model">stock.picking</field>
-        <field name="inherit_id" ref="stock.view_picking_form"/>
-        <field name="arch" type="xml">
-            <!-- Inserta campos adicionales directamente en el list embebido -->
-            <xpath expr="//field[@name='move_line_ids_without_package']/list" position="inside">
                 <field name="x_lote_comun"/>
                 <field name="x_sku_prefix"/>
-                <field name="sku_unico" readonly="1"/>
             </xpath>
         </field>
     </record>
