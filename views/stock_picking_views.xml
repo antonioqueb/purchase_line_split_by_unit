@@ -1,20 +1,24 @@
 <odoo>
+    <!-- Extiende la vista tipo lista (tree) de las líneas de picking -->
     <record id="stock_move_line_tree_view_inherit_sku" model="ir.ui.view">
-        <field name="name">stock.move.line.tree.view.sku</field>
+        <field name="name">stock.move.line.tree.inherit.sku</field>
         <field name="model">stock.move.line</field>
         <field name="inherit_id" ref="stock.view_move_line_tree"/>
         <field name="arch" type="xml">
-            <xpath expr="//field[@name='qty_done']" position="after">
+            <!-- Agrega el campo al final de la vista tree -->
+            <xpath expr="//tree" position="inside">
                 <field name="sku_unico"/>
             </xpath>
         </field>
     </record>
 
+    <!-- Extiende la vista formulario de líneas de picking -->
     <record id="stock_move_line_form_view_inherit_sku" model="ir.ui.view">
-        <field name="name">stock.move.line.form.view.sku</field>
+        <field name="name">stock.move.line.form.inherit.sku</field>
         <field name="model">stock.move.line</field>
         <field name="inherit_id" ref="stock.view_move_line_form"/>
         <field name="arch" type="xml">
+            <!-- Inserta el campo después de qty_done si está disponible -->
             <xpath expr="//field[@name='qty_done']" position="after">
                 <field name="sku_unico" readonly="1"/>
             </xpath>
