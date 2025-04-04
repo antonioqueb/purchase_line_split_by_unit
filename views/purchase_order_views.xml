@@ -1,0 +1,27 @@
+<odoo>
+    <record id="purchase_order_form_inherit_lote_sku" model="ir.ui.view">
+        <field name="name">purchase.order.form.lote.sku.inherit</field>
+        <field name="model">purchase.order</field>
+        <field name="inherit_id" ref="purchase.purchase_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//group[1]" position="after">
+                <group string="Trazabilidad">
+                    <field name="x_lote_comun"/>
+                    <field name="x_sku_prefix"/>
+                </group>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="purchase_order_line_form_inherit_lote_sku" model="ir.ui.view">
+        <field name="name">purchase.order.line.form.lote.sku.inherit</field>
+        <field name="model">purchase.order.line</field>
+        <field name="inherit_id" ref="purchase.purchase_order_line_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//group" position="inside">
+                <field name="x_lote_comun"/>
+                <field name="x_sku_prefix"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>
