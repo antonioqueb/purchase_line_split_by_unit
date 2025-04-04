@@ -5,18 +5,21 @@
         <field name="inherit_id" ref="purchase.purchase_order_form"/>
         <field name="arch" type="xml">
 
-            <!-- Campos en cabecera general -->
             <xpath expr="//group[1]" position="after">
                 <group string="Trazabilidad">
-                    <field name="x_lote_comun"/>
-                    <field name="x_sku_prefix"/>
+                    <field name="common_lot"/>
+                    <field name="sku_prefix"/>
                 </group>
             </xpath>
 
-            <!-- Mostrar los campos en la vista list de las líneas de orden de compra -->
             <xpath expr="//field[@name='order_line']/list" position="inside">
-                <field name="x_lote_comun"/>
-                <field name="x_sku_prefix"/>
+                <field name="common_lot"/>
+                <field name="sku_prefix"/>
+            </xpath>
+
+            <xpath expr="//field[@name='order_line']/form//group" position="inside">
+                <field name="common_lot"/>
+                <field name="sku_prefix"/>
             </xpath>
 
         </field>
