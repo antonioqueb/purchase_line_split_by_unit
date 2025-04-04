@@ -1,12 +1,11 @@
 <odoo>
-    <!-- Extiende la vista de orden de compra principal -->
     <record id="purchase_order_form_inherit_lote_sku" model="ir.ui.view">
         <field name="name">purchase.order.form.inherit.lote.sku</field>
         <field name="model">purchase.order</field>
         <field name="inherit_id" ref="purchase.purchase_order_form"/>
         <field name="arch" type="xml">
 
-            <!-- Añadir los campos generales en la cabecera del formulario -->
+            <!-- Campos en cabecera general -->
             <xpath expr="//group[1]" position="after">
                 <group string="Trazabilidad">
                     <field name="x_lote_comun"/>
@@ -14,8 +13,8 @@
                 </group>
             </xpath>
 
-            <!-- Mostrar los campos por línea en el listado (tree) de order_line -->
-            <xpath expr="//field[@name='order_line']/tree" position="inside">
+            <!-- Mostrar los campos en la vista list de las líneas de orden de compra -->
+            <xpath expr="//field[@name='order_line']/list" position="inside">
                 <field name="x_lote_comun"/>
                 <field name="x_sku_prefix"/>
             </xpath>
