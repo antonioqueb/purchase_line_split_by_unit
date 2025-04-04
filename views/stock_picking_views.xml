@@ -6,7 +6,6 @@
         <field name="inherit_id" ref="stock.view_move_line_tree"/>
         <field name="arch" type="xml">
             <xpath expr="//field[@name='product_id']" position="after">
-                <field name="sku_unico" readonly="1"/>
                 <field name="x_lote_comun"/>
                 <field name="x_sku_prefix"/>
             </xpath>
@@ -20,7 +19,6 @@
         <field name="inherit_id" ref="stock.view_move_line_form"/>
         <field name="arch" type="xml">
             <xpath expr="//field[@name='quantity']" position="after">
-                <field name="sku_unico" readonly="1"/>
                 <field name="x_lote_comun"/>
                 <field name="x_sku_prefix"/>
             </xpath>
@@ -36,7 +34,6 @@
         <field name="arch" type="xml">
             <!-- En la subvista tree de move_line_ids_without_package, agregamos los campos -->
             <xpath expr="//field[@name='move_line_ids_without_package']/tree" position="inside">
-                <field name="sku_unico" readonly="1"/>
                 <field name="x_lote_comun" readonly="1"/>
                 <field name="x_sku_prefix" readonly="1"/>
             </xpath>
