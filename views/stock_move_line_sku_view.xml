@@ -1,8 +1,9 @@
 <odoo>
+    <!-- Vista tipo lista para trazabilidad por SKU -->
     <record id="view_stock_move_line_by_sku_list" model="ir.ui.view">
         <field name="name">view.stock.move.line.by.sku.list</field>
         <field name="model">stock.move.line</field>
-        <field name="type">list</field> <!-- CORRECTO PARA ODOO 18 -->
+        <field name="type">list</field>
         <field name="arch" type="xml">
             <list string="Trazabilidad por SKU" editable="bottom">
                 <field name="picking_id"/>
@@ -18,6 +19,7 @@
         </field>
     </record>
 
+    <!-- Acción para abrir la vista -->
     <record id="action_view_move_line_by_sku" model="ir.actions.act_window">
         <field name="name">Unidades por SKU</field>
         <field name="res_model">stock.move.line</field>
@@ -26,9 +28,10 @@
         <field name="context">{}</field>
     </record>
 
+    <!-- Menú colgado del menú raíz de Inventario -->
     <menuitem id="menu_move_line_by_sku_root"
               name="Inventario por SKU"
-              parent="stock.menu_inventory_control"
+              parent="stock.menu_stock_root"
               sequence="50"
               action="action_view_move_line_by_sku"/>
 </odoo>
