@@ -20,4 +20,5 @@ class StockMoveLine(models.Model):
                 for quant in quants:
                     quant.common_lot = line.common_lot
                     quant.sku_prefix = line.sku_prefix
+                    quant.unique_sku = line.unique_sku 
         return move_lines

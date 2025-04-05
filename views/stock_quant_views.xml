@@ -4,7 +4,9 @@
         <field name="model">stock.quant</field>
         <field name="inherit_id" ref="stock.view_stock_quant_tree_editable"/>
         <field name="arch" type="xml">
+            <!-- Agrega campo visible y útil para agrupación visual -->
             <xpath expr="//field[@name='lot_id']" position="after">
+                <field name="unique_sku" readonly="1"/>
                 <field name="common_lot" readonly="1"/>
                 <field name="sku_prefix" readonly="1"/>
             </xpath>
