@@ -17,9 +17,6 @@ class StockPicking(models.Model):
         return res
 
     def _generate_sku_for_line(self, move_line, line_counter):
-        Lot = self.env['stock.production.lot']
-        StockMoveLine = self.env['stock.move.line']
-
         purchase_line = move_line.move_id.purchase_line_id
         if not purchase_line:
             return
@@ -33,23 +30,10 @@ class StockPicking(models.Model):
         # Asignar datos a la línea
         move_line.common_lot = common_lot
         move_line.sku_prefix = sku_prefix
-
-        # Buscar o crear el lote
-        lot_id = Lot.search([
-            ('name', '=', common_lot),
-            ('product_id', '=', move_line.product_id.id)
-        ], limit=1)
-
-        if not lot_id:
-            lot_id = Lot.create({
-                'name': common_lot,
-                'product_id': move_line.product_id.id
-            })
-
-        move_line.lot_id = lot_id
+        move_line.lot_name = common_lot  # Aquí se genera el lote automáticamente al validar
 
         # Determinar prefijo base
-        prefix = sku_prefix or lot_id.name
+        prefix = sku_prefix or common_lot
         if not prefix:
             raise UserError(_("No se puede generar el SKU: no hay prefijo definido."))
 
@@ -62,8 +46,8 @@ class StockPicking(models.Model):
         # Generar SKU
         sku = f"{prefix}-{str(line_counter[prefix]).zfill(3)}"
 
-        # Validar duplicado (opcional: por picking y producto)
-        existing = StockMoveLine.search_count([
+        # Validar duplicado en el mismo picking y producto
+        existing = self.env['stock.move.line'].search_count([
             ('unique_sku', '=', sku),
             ('picking_id', '=', move_line.picking_id.id),
             ('product_id', '=', move_line.product_id.id),
