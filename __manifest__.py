@@ -22,6 +22,8 @@ Ideal para trazabilidad detallada sin necesidad de activar números de serie.
     'data': [
         'views/purchase_order_views.xml',
         'views/stock_picking_views.xml',
+        'views/stock_quant_views.xml',
+
     ],
     'installable': True,
     'application': False,
