@@ -1,5 +1,4 @@
 <odoo>
-    <!-- Vista tipo lista para trazabilidad por SKU -->
     <record id="view_stock_move_line_by_sku_list" model="ir.ui.view">
         <field name="name">view.stock.move.line.by.sku.list</field>
         <field name="model">stock.move.line</field>
@@ -10,16 +9,14 @@
                 <field name="product_id"/>
                 <field name="location_dest_id"/>
                 <field name="unique_sku"/>
-                <field name="common_lot"/>
                 <field name="lot_id"/>
-                <field name="sku_prefix"/>
+                
                 <field name="quantity"/>
                 <field name="date"/>
             </list>
         </field>
     </record>
 
-    <!-- Acción para abrir la vista -->
     <record id="action_view_move_line_by_sku" model="ir.actions.act_window">
         <field name="name">Unidades por SKU</field>
         <field name="res_model">stock.move.line</field>
@@ -28,7 +25,6 @@
         <field name="context">{}</field>
     </record>
 
-    <!-- Menú colgado del menú raíz de Inventario -->
     <menuitem id="menu_move_line_by_sku_root"
               name="Inventario por SKU"
               parent="stock.menu_stock_root"

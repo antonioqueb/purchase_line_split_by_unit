@@ -1,5 +1,4 @@
 <odoo>
-    <!-- stock.move.line TREE -->
     <record id="stock_move_line_tree_view_inherit_sku" model="ir.ui.view">
         <field name="name">stock.move.line.tree.inherit.sku</field>
         <field name="model">stock.move.line</field>
@@ -7,13 +6,11 @@
         <field name="arch" type="xml">
             <xpath expr="//field[@name='product_id']" position="after">
                 <field name="unique_sku" readonly="1"/>
-                <field name="common_lot" readonly="1"/>
                 <field name="sku_prefix" readonly="1"/>
             </xpath>
         </field>
     </record>
 
-    <!-- stock.move.line FORM -->
     <record id="stock_move_line_form_view_inherit_sku" model="ir.ui.view">
         <field name="name">stock.move.line.form.inherit.sku</field>
         <field name="model">stock.move.line</field>
@@ -21,13 +18,11 @@
         <field name="arch" type="xml">
             <xpath expr="//field[@name='quantity']" position="after">
                 <field name="unique_sku" readonly="1"/>
-                <field name="common_lot"/>
-                <field name="sku_prefix"/>
+                
             </xpath>
         </field>
     </record>
 
-    <!-- stock.move.line TREE sin paquete -->
     <record id="stock_move_line_tree_view_no_package_inherit_sku" model="ir.ui.view">
         <field name="name">stock.move.line.tree.no.package.inherit.sku</field>
         <field name="model">stock.move.line</field>
@@ -35,20 +30,17 @@
         <field name="arch" type="xml">
             <xpath expr="//field[@name='product_id']" position="after">
                 <field name="unique_sku" readonly="1"/>
-                <field name="common_lot" readonly="1"/>
                 <field name="sku_prefix" readonly="1"/>
             </xpath>
         </field>
     </record>
 
-    <!-- stock.picking FORM - Agregar columnas a operaciones (stock.move) -->
     <record id="stock_picking_form_inherit_lote_sku" model="ir.ui.view">
         <field name="name">stock.picking.form.inherit.lote.sku</field>
         <field name="model">stock.picking</field>
         <field name="inherit_id" ref="stock.view_picking_form"/>
         <field name="arch" type="xml">
             <xpath expr="//field[@name='move_ids_without_package']//field[@name='product_id']" position="after">
-                <field name="common_lot" readonly="1"/>
                 <field name="sku_prefix" readonly="1"/>
             </xpath>
         </field>

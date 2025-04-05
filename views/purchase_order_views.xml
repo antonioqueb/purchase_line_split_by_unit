@@ -4,24 +4,12 @@
         <field name="model">purchase.order</field>
         <field name="inherit_id" ref="purchase.purchase_order_form"/>
         <field name="arch" type="xml">
-
-            <xpath expr="//group[1]" position="after">
-                <group string="Trazabilidad">
-                    <field name="common_lot"/>
-                    <field name="sku_prefix"/>
-                </group>
-            </xpath>
-
             <xpath expr="//field[@name='order_line']/list" position="inside">
-                <field name="common_lot"/>
-                <field name="sku_prefix"/>
+                
             </xpath>
-
             <xpath expr="//field[@name='order_line']/form//group" position="inside">
-                <field name="common_lot"/>
-                <field name="sku_prefix"/>
+                
             </xpath>
-
         </field>
     </record>
 </odoo>
