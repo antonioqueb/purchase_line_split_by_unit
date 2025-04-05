@@ -1,0 +1,33 @@
+<odoo>
+    <record id="view_stock_move_line_by_sku_tree" model="ir.ui.view">
+        <field name="name">view.stock.move.line.by.sku.tree</field>
+        <field name="model">stock.move.line</field>
+        <field name="arch" type="xml">
+            <tree string="Trazabilidad por SKU" editable="bottom">
+                <field name="picking_id"/>
+                <field name="product_id"/>
+                <field name="location_dest_id"/>
+                <field name="unique_sku"/>
+                <field name="common_lot"/>
+                <field name="lot_id"/>
+                <field name="sku_prefix"/>
+                <field name="quantity"/>
+                <field name="date"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="action_view_move_line_by_sku" model="ir.actions.act_window">
+        <field name="name">Unidades por SKU</field>
+        <field name="res_model">stock.move.line</field>
+        <field name="view_mode">tree</field>
+        <field name="view_id" ref="view_stock_move_line_by_sku_tree"/>
+        <field name="context">{}</field>
+    </record>
+
+    <menuitem id="menu_move_line_by_sku_root"
+              name="Inventario por SKU"
+              parent="stock.menu_inventory_control"
+              sequence="50"
+              action="action_view_move_line_by_sku"/>
+</odoo>
