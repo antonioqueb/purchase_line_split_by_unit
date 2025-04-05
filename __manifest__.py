@@ -17,6 +17,7 @@ Ideal para trazabilidad detallada sin necesidad de activar números de serie.
     'depends': [
         'purchase',
         'stock',
+        'purchase_stock',
     ],
     'data': [
         'views/purchase_order_views.xml',
