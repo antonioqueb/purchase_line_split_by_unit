@@ -35,4 +35,4 @@ class PurchaseOrderLine(models.Model):
     def _check_tracking_fields(self):
         for line in self:
             if line.product_id and line.product_id.tracking == 'lot':
-                pass  # Ya no se requiere ninguna validación relacionada al sku_prefix
+                pass 

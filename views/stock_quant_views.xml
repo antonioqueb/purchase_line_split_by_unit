@@ -6,7 +6,6 @@
         <field name="arch" type="xml">
             <xpath expr="//field[@name='lot_id']" position="after">
                 <field name="unique_sku" readonly="1"/>
-                <field name="sku_prefix" readonly="1"/>
             </xpath>
         </field>
     </record>
